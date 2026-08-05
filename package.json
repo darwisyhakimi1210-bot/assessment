@@ -1,0 +1,29 @@
+{
+  "name": "qa",
+  "version": "1.0.0",
+  "description": "GSC Cinema movie ticket booking automation with Playwright + TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "report:open": "playwright show-report playwright-report"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "automation",
+    "gsc",
+    "cinema"
+  ],
+  "author": "QA Team",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.2",
+    "dotenv": "^17.4.2",
+    "twilio": "^6.0.2",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "sk-cp-2m6oOttlxkwoTNpYhsCvaaRfp-71ekBj5LZ5Aqyd-M7IqWHfjprLWbtl-XNRMqosAdvpXRHZiSqcGjOxuGh96fg0ZHLI4jadjEREhlsJW17WY9OjQXgNz40",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7-highspeed",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "MiniMax-M2.7"
+  },
+  "slashCommands": {
+    "server-n8n-check": ".claude/agents/server-n8n-check.md",
+    "qa-mentor": ".claude/skills/qa-mentor/SKILL.md"
+  }
+}

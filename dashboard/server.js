@@ -94,10 +94,14 @@ app.post('/api/run/:id', (req, res) => {
   res.json({ ok: true, id: test.id });
 
   // Spawn the test process
+  // --timeout=180000 gives each test 3 minutes (default is 30s — too short for GSC)
+  // --workers=1 ensures tests run sequentially
+  // We intentionally do NOT pass --headed (the dashboard runs the test headless)
   const args = [
     'playwright', 'test', test.spec,
     '--reporter=list',
     '--workers=1',
+    '--timeout=180000',
   ];
   const child = spawn('npx', args, {
     cwd: path.resolve(__dirname, '..'),

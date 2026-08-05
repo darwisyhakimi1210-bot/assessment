@@ -7,7 +7,9 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
-    "report:open": "playwright show-report playwright-report"
+    "report:open": "playwright show-report playwright-report",
+    "dashboard": "node dashboard/server.js",
+    "dashboard:dev": "node dashboard/server.js"
   },
   "keywords": [
     "playwright",
@@ -23,6 +25,7 @@
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.2",
     "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "twilio": "^6.0.2",
     "typescript": "^5.9.3"
   }

@@ -180,6 +180,84 @@ QA/
 
 ---
 
+## 🖥️ React Test Dashboard
+
+A simple React dashboard that lists the 3 test scenarios and lets you trigger
+them individually — no build step required, runs entirely in your browser.
+
+### How to run the dashboard (step-by-step)
+
+**Step 1 — Open a terminal and navigate to the project root:**
+```powershell
+cd C:\Users\darwi\Desktop\QA
+```
+
+**Step 2 — Make sure dependencies are installed (only the first time):**
+```powershell
+npm install
+```
+This installs both Playwright and Express (used by the dashboard backend).
+
+**Step 3 — Start the dashboard server:**
+```powershell
+npm run dashboard
+```
+or equivalently:
+```powershell
+node dashboard/server.js
+```
+
+You should see:
+```
+🎬  GSC Test Dashboard running at http://localhost:3001
+```
+
+**Step 4 — Open the dashboard in your browser:**
+Go to **http://localhost:3001**
+
+You'll see:
+- A summary panel showing **Total / Passed / Failed / Running** counts
+- Three test cards (one per scenario)
+- Each card has a **"▶ Run"** button
+- A **"▶ Run All Tests"** button at the top
+- A live log box per test (streams Playwright output as it runs)
+
+**Step 5 — Click any "▶ Run" button:**
+The test starts in the background. You'll see:
+- Status badge changes: `idle` → `running` → `passed` / `failed`
+- The log box fills with Playwright output (`✓ ...` for each step)
+- The summary counts update live
+
+**Step 6 — To stop the dashboard:** press `Ctrl+C` in the terminal.
+
+### Dashboard Architecture
+
+```
+Browser (React via CDN)
+   │
+   ├── GET  /api/tests        → list all 3 tests
+   ├── GET  /api/events       → SSE stream of live status/output
+   ├── POST /api/run/:id      → spawn Playwright for ONE test
+   └── POST /api/run-all      → spawn Playwright for ALL tests
+
+Backend (dashboard/server.js, Express)
+   │
+   └── spawn('npx playwright test <spec>')
+            │
+            ▼ stdout/stderr → SSE → React UI
+```
+
+### Files in `dashboard/`
+
+| File                    | Purpose                                            |
+| ----------------------- | -------------------------------------------------- |
+| `server.js`             | Express backend — spawns Playwright, streams SSE  |
+| `public/index.html`     | HTML shell with React + Babel via CDN (no build)   |
+| `public/app.js`         | React component (App + TestCard)                  |
+| `README.md`             | Standalone dashboard docs                         |
+
+---
+
 ## ⚠️ Disclaimer
 
 This automation targets the **production** GSC website (`https://www.gsc.com.my`).
